@@ -1,12 +1,14 @@
 import { Arrivals } from 'src/arrivals/entities/arrivals.entity';
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany, ManyToMany } from 'typeorm';
 import { BrigadeMedicalPersonnel } from 'src/brigade-medical-personnel/entities/brigade-medical-personnel.entity';
+import { ApiProperty, ApiTags } from '@nestjs/swagger';
 
 @Entity('brigade')
 export class Brigade {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @ApiProperty()
     @Column()
     nickName: string;    
 

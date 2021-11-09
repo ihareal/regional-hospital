@@ -12,4 +12,7 @@ export class Cards {
     @OneToOne(() => RegisterOfCards)
     @JoinColumn()
     registerOfCard: RegisterOfCards;
+
+    @Column()
+    registerOfCardId: number;
 }

@@ -1,26 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { CreateRegisterOfCardDto } from './dto/create-register-of-card.dto';
-import { UpdateRegisterOfCardDto } from './dto/update-register-of-card.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
+import { RegisterOfCards } from './entities/register-of-cards.entity';
 
 @Injectable()
-export class RegisterOfCardsService {
-  create(createRegisterOfCardDto: CreateRegisterOfCardDto) {
-    return 'This action adds a new registerOfCard';
-  }
-
-  findAll() {
-    return `This action returns all registerOfCards`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} registerOfCard`;
-  }
-
-  update(id: number, updateRegisterOfCardDto: UpdateRegisterOfCardDto) {
-    return `This action updates a #${id} registerOfCard`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} registerOfCard`;
+export class RegisterOfCardsService extends TypeOrmCrudService<RegisterOfCards>{
+  constructor(@InjectRepository(RegisterOfCards) repo) {
+    super(repo)
   }
 }

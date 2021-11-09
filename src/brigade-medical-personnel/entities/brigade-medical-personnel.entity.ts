@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjsx/crud/lib/crud';
 import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Brigade } from '../../brigade/entities/brigade.entity'
 
@@ -6,18 +7,26 @@ export class BrigadeMedicalPersonnel {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @ApiProperty()
     @Column()
     firstName: string;
 
+    @ApiProperty()
     @Column()
     surname: string;
 
+    @ApiProperty()
     @Column()
     lastName: string;
 
+    @ApiProperty()
     @Column()
-    position: string;
+    position: string;    
 
     @ManyToOne(() => Brigade, brigade => brigade.brigadeMedicalPersonnels)
     brigade: Brigade;
+
+    @ApiProperty()
+    @Column()
+    brigadeId: number;
 }

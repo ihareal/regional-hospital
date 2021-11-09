@@ -1,34 +1,17 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+import { Crud, CrudController } from '@nestjsx/crud';
+import { RegisterOfCards } from './entities/register-of-cards.entity';
 import { RegisterOfCardsService } from './register-of-cards.service';
-import { CreateRegisterOfCardDto } from './dto/create-register-of-card.dto';
-import { UpdateRegisterOfCardDto } from './dto/update-register-of-card.dto';
 
+@Crud({
+  model: {
+    type: RegisterOfCards
+  }
+})
+
+@ApiTags('Register of cards')
 @Controller('register-of-cards')
-export class RegisterOfCardsController {
-  constructor(private readonly registerOfCardsService: RegisterOfCardsService) {}
-
-  @Post()
-  create(@Body() createRegisterOfCardDto: CreateRegisterOfCardDto) {
-    return this.registerOfCardsService.create(createRegisterOfCardDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.registerOfCardsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.registerOfCardsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateRegisterOfCardDto: UpdateRegisterOfCardDto) {
-    return this.registerOfCardsService.update(+id, updateRegisterOfCardDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.registerOfCardsService.remove(+id);
-  }
+export class RegisterOfCardsController implements CrudController<RegisterOfCards>{
+  constructor(public service: RegisterOfCardsService) {}
 }

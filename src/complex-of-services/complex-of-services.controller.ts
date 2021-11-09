@@ -1,34 +1,26 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
+import { Crud, CrudController } from '@nestjsx/crud';
 import { ComplexOfServicesService } from './complex-of-services.service';
-import { CreateComplexOfServiceDto } from './dto/create-complex-of-service.dto';
-import { UpdateComplexOfServiceDto } from './dto/update-complex-of-service.dto';
+import { ComplexOfServices } from './entities/complex-of-services.entity';
 
+@Crud({
+  model: {
+    type: ComplexOfServices
+  },
+  query: {
+    alwaysPaginate: false,
+    join: {
+      catalogueOfServices:{
+        alias: 'catalogueOfServices',
+        eager: true,
+      }
+    }
+  }
+})
+
+@ApiTags('Complex of services')
 @Controller('complex-of-services')
-export class ComplexOfServicesController {
-  constructor(private readonly complexOfServicesService: ComplexOfServicesService) {}
-
-  @Post()
-  create(@Body() createComplexOfServiceDto: CreateComplexOfServiceDto) {
-    return this.complexOfServicesService.create(createComplexOfServiceDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.complexOfServicesService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.complexOfServicesService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateComplexOfServiceDto: UpdateComplexOfServiceDto) {
-    return this.complexOfServicesService.update(+id, updateComplexOfServiceDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.complexOfServicesService.remove(+id);
-  }
+export class ComplexOfServicesController implements CrudController<ComplexOfServices> {
+  constructor(public service: ComplexOfServicesService) {}  
 }

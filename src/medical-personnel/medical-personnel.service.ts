@@ -1,26 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { CreateMedicalPersonnelDto } from './dto/create-medical-personnel.dto';
-import { UpdateMedicalPersonnelDto } from './dto/update-medical-personnel.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
+import { MedicalPersonnel } from './entities/medical-personnel.entity';
+import { MedicalPersonnelController } from './medical-personnel.controller';
 
 @Injectable()
-export class MedicalPersonnelService {
-  create(createMedicalPersonnelDto: CreateMedicalPersonnelDto) {
-    return 'This action adds a new medicalPersonnel';
-  }
-
-  findAll() {
-    return `This action returns all medicalPersonnel`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} medicalPersonnel`;
-  }
-
-  update(id: number, updateMedicalPersonnelDto: UpdateMedicalPersonnelDto) {
-    return `This action updates a #${id} medicalPersonnel`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} medicalPersonnel`;
+export class MedicalPersonnelService extends TypeOrmCrudService<MedicalPersonnel>{
+  constructor(@InjectRepository(MedicalPersonnel) repo){
+    super(repo)
   }
 }

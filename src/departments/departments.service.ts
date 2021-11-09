@@ -1,26 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { CreateDepartmentDto } from './dto/create-department.dto';
-import { UpdateDepartmentDto } from './dto/update-department.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { TypeOrmCrudService } from '@nestjsx/crud-typeorm';
+import { Departments } from './entities/departments.entity';
 
 @Injectable()
-export class DepartmentsService {
-  create(createDepartmentDto: CreateDepartmentDto) {
-    return 'This action adds a new department';
-  }
-
-  findAll() {
-    return `This action returns all departments`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} department`;
-  }
-
-  update(id: number, updateDepartmentDto: UpdateDepartmentDto) {
-    return `This action updates a #${id} department`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} department`;
+export class DepartmentsService extends TypeOrmCrudService<Departments>{  
+  constructor(@InjectRepository(Departments) repo) {
+    super(repo)
   }
 }
