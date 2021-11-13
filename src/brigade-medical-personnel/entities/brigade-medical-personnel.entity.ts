@@ -26,7 +26,8 @@ export class BrigadeMedicalPersonnel {
     @ManyToOne(() => Brigade, brigade => brigade.brigadeMedicalPersonnels)
     brigade: Brigade;
 
+    @Column({ nullable: true })
     @ApiProperty()
     @Column()
-    brigadeId: number;
+    brigadeId?: number;
 }

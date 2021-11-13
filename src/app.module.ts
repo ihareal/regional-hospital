@@ -14,10 +14,10 @@ import { MedicalPersonnelModule } from './medical-personnel/medical-personnel.mo
 import { PatientsModule } from './patients/patients.module';
 import { RegisterOfCardsModule } from './register-of-cards/register-of-cards.module';
 import { NewsModule } from './news/news.module';
-import { ComplaintsSuggestionssModule } from './complaints-suggestionss/complains-suggestionss.module';
+import { ComplaintsSuggestionsModule } from './complains-suggestionss/complains-suggestions.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(typeOrmConfig), ArrivalsModule, BrigadeMedicalPersonnelModule, BrigadeModule, ComplexOfServicesModule, CatalogueOfServicesModule, CardsModule, ComplaintsSuggestionssModule, DepartmentsModule, MedicalPersonnelModule, PatientsModule, RegisterOfCardsModule, NewsModule],
+  imports: [TypeOrmModule.forRoot(typeOrmConfig), ArrivalsModule, BrigadeMedicalPersonnelModule, BrigadeModule, ComplexOfServicesModule, CatalogueOfServicesModule, CardsModule, ComplaintsSuggestionsModule, DepartmentsModule, MedicalPersonnelModule, PatientsModule, RegisterOfCardsModule, NewsModule],
   controllers: [AppController],
   providers: [AppService],
 })

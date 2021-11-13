@@ -23,6 +23,6 @@ export class RegisterOfCards {
     @Column()
     registration: string;
 
-    @OneToMany(() => Arrivals, arrivals => arrivals.regiserOfCards)
+    @OneToMany(() => Arrivals, arrivals => arrivals.registerOfCards)
     arrivals: Arrivals[];
 }

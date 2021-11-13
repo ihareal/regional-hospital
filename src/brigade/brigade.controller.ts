@@ -8,6 +8,13 @@ import { Brigade } from './entities/brigade.entity';
 @Crud({
   model: {
     type: Brigade
+  },
+  query:{ join: {
+    brigadeMedicalPersonnels:{
+      alias: 'brigadeMedicalPersonnels',
+      eager: true,
+      },
+    }
   }
 })
 

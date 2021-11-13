@@ -17,13 +17,15 @@ export class Arrivals {
     @ManyToOne(() => Brigade, brigade => brigade.arrivals)
     brigades: Brigade;
 
+    @Column({ nullable: true })
     @ApiProperty()
-    brigadesId: number;
+    brigadesId?: number;
 
     @ApiProperty()
     @ManyToOne(() => RegisterOfCards, registerOfCards => registerOfCards.arrivals)
-    regiserOfCards: RegisterOfCards;
+    registerOfCards: RegisterOfCards;
 
+    @Column({ nullable: true })
     @ApiProperty()
-    regiserOfCardsId: number;
+    registerOfCardsId?: number;
 }

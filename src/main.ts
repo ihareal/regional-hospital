@@ -4,6 +4,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.enableCors({origin: "*", credentials:true});
 
   const config = new DocumentBuilder()
     .setTitle('Regional hospital example')
@@ -13,7 +14,6 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
-  
-  await app.listen(3000);
+  await app.listen(3000);  
 }
 bootstrap();

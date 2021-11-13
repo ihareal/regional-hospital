@@ -4,7 +4,7 @@ import { Column, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 't
 
 @Entity('patients')
 export class Patients {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn()    
     id: number;
 
     @ApiProperty()

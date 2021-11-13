@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Crud, CrudController } from '@nestjsx/crud';
-import { ComplainsSuggestionssService } from './complains-suggestionss.service';
+import { ComplainsSuggestionsService } from './complains-suggestions.service';
 import { ComplainsSuggestions } from './entities/complains-suggestions.entity';
 
 @Crud({
@@ -11,7 +11,7 @@ import { ComplainsSuggestions } from './entities/complains-suggestions.entity';
 })
 
 @ApiTags('Complains suggestions')
-@Controller('complaints-suggestionss')
-export class ComplainsSuggestionssController implements CrudController<ComplainsSuggestions>{
-  constructor(public service: ComplainsSuggestionssService) {}
+@Controller('complains-suggestions')
+export class ComplainsSuggestionsController implements CrudController<ComplainsSuggestions>{
+  constructor(public service: ComplainsSuggestionsService) {}
 }
