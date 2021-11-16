@@ -7,7 +7,7 @@ import { Cards } from './entities/cards.entity';
 @Crud({
   model: {
     type: Cards
-  }
+  },
 })
 
 @ApiTags('Cards')

@@ -10,7 +10,7 @@ export class Brigade {
 
     @ApiProperty()
     @Column()
-    nickName: string;    
+    nickName: string;
 
     @OneToMany(() => Arrivals, arrival => arrival.brigades)
     arrivals: Arrivals[];

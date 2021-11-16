@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjsx/crud/lib/crud';
 import { Arrivals } from 'src/arrivals/entities/arrivals.entity';
-import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Patients } from 'src/patients/entities/patients.entity';
+import { Column, Entity, PrimaryGeneratedColumn, OneToMany, OneToOne, JoinColumn } from 'typeorm';
 
 @Entity('registerOfCards')
 export class RegisterOfCards {
@@ -25,4 +26,13 @@ export class RegisterOfCards {
 
     @OneToMany(() => Arrivals, arrivals => arrivals.registerOfCards)
     arrivals: Arrivals[];
+
+    @OneToOne(() => Patients)
+    @JoinColumn()
+    patients: Patients;
+
+    @ApiProperty()
+    @Column()
+    patientId: number;
+
 }

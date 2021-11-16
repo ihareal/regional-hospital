@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjsx/crud/lib/crud';
 import { MedicalPersonnel } from 'src/medical-personnel/entities/medical-personnel.entity';
-import { Column, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToMany, JoinTable, OneToOne } from 'typeorm';
 
 @Entity('patients')
 export class Patients {
@@ -25,7 +25,7 @@ export class Patients {
 
     @ApiProperty()
     @Column()
-    contacts: string;
+    phoneNumber: string;
 
     @ManyToMany(type => MedicalPersonnel, medicalPersonnel => medicalPersonnel.patients)
     @JoinTable()

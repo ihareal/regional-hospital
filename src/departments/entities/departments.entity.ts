@@ -20,5 +20,6 @@ export class Departments {
     medicalPersonnel: MedicalPersonnel;
 
     @ApiProperty()
+    @Column()
     medicalPersonnelId: number;
 }
